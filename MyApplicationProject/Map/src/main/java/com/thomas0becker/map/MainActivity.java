@@ -1,12 +1,12 @@
 package com.thomas0becker.map;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -29,9 +29,11 @@ public class MainActivity extends Activity {
         final int locationUpdateRC = 0;
 
         Intent intent = new Intent(this, MyLocationUpdateReceiver.class);
-        PendingIntent pendingIntent = pendingIntent.getBroadcast(this, locationUpdateRC, intent, flags);
+        PendingIntent pendingIntent;
+        pendingIntent = pendingIntent.getBroadcast(this, locationUpdateRC, intent, flags);
 
-       Location l = locationManager.getLastKnownLocation(provider, t, distance, pendingIntent);
+        Location l;
+        l = locationManager.getLastKnownLocation(provider, t, distance, pendingIntent);
 
         updateWithNewLocation(l);
     }
